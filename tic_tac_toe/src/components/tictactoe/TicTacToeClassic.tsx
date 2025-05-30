@@ -28,26 +28,14 @@ export default component$(() => {
   });
 
   // PUBLIC_INTERFACE
-  const handleCellClick = $((index: number) => {
-    if (board.value[index] !== "" || gameStatus.value) {
-      return;
-    }
-    board.value[index] = xIsNext.value ? "X" : "O";
-    checkGameState();
-    if (!gameStatus.value) {
-      xIsNext.value = !xIsNext.value;
-    }
-  });
-
-  // PUBLIC_INTERFACE
-  function checkGameState() {
+  const checkGameState = $(function () {
     const lines = [
-      [0,1,2],[3,4,5],[6,7,8], // rows
-      [0,3,6],[1,4,7],[2,5,8], // cols
-      [0,4,8],[2,4,6]          // diags
+      [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
+      [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
+      [0, 4, 8], [2, 4, 6]             // diagonals
     ];
     for (const line of lines) {
-      const [a,b,c] = line;
+      const [a, b, c] = line;
       if (
         board.value[a] &&
         board.value[a] === board.value[b] &&
@@ -62,7 +50,18 @@ export default component$(() => {
       gameStatus.value = "draw";
       winningLine.value = null;
     }
-  }
+  });
+
+  const handleCellClick = $(async (index: number) => {
+    if (board.value[index] !== "" || gameStatus.value) {
+      return;
+    }
+    board.value[index] = xIsNext.value ? "X" : "O";
+    await checkGameState();
+    if (!gameStatus.value) {
+      xIsNext.value = !xIsNext.value;
+    }
+  });
 
   // UI: Player indicator & status
   let statusMessage = "";
