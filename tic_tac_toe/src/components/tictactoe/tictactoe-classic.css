@@ -1,0 +1,62 @@
+.tictactoe-container {
+  min-height: 100vh;
+  background: #fff;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tictactoe-board {
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  grid-template-rows: repeat(3, 64px);
+  gap: 0.5rem;
+  background: #fff;
+}
+.tictactoe-status {
+  margin-bottom: 2.4rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+  letter-spacing: 0.03em;
+  color: #000;
+  min-height: 2.2em;
+}
+.tictactoe-cell {
+  background: #fff;
+  color: #999;
+  border: 2px solid #000;
+  outline: none;
+  border-radius: 12px;
+  font-size: 2.5rem;
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border 0.18s, box-shadow 0.18s;
+}
+.tictactoe-cell-x {
+  color: #2196f3;
+}
+.tictactoe-cell-o {
+  color: #000;
+}
+.tictactoe-cell-win {
+  border: 2.5px solid #2196f3;
+  box-shadow: 0 0 0 2px #2196f3;
+}
+.tictactoe-cell[disabled] {
+  cursor: default;
+}
+.tictactoe-reset {
+  margin-top: 1.3rem;
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.85em 2em;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
